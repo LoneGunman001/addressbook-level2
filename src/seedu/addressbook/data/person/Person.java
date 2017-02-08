@@ -14,6 +14,8 @@ public class Person implements ReadOnlyPerson {
     private Phone phone;
     private Email email;
     private Address address;
+    
+    private static final String PRINTABLE_SEPERATOR = ", ";
 
     private final UniqueTagList tags;
     /**
@@ -82,6 +84,19 @@ public class Person implements ReadOnlyPerson {
     @Override
     public String toString() {
         return getAsTextShowAll();
+    }
+    
+    public String getPrintableString(Printable... printables) {
+        String printableString = "";
+        for (Printable printable : printables) {
+            if (printableString.equals("")) {
+                printableString = printable.getPrintableString();
+            } else {
+                printableString += PRINTABLE_SEPERATOR;
+                printableString += printable.getPrintableString();
+            }
+        }
+        return printableString;
     }
 
 }
