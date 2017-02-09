@@ -48,4 +48,8 @@ public class Contact {
     public int hashCode() {
         return value.hashCode();
     }
+    
+    public boolean isPrivate() {
+        return isPrivate;
+    }
 }
