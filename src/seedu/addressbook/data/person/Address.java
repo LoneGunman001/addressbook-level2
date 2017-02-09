@@ -20,11 +20,7 @@ public class Address extends Contact {
      * @throws IllegalValueException if given address string is invalid.
      */
     public Address(String address, boolean isPrivate) throws IllegalValueException {
-        super(address);
-        this.isPrivate = isPrivate;
-        if (!isValidAddress(this.value)) {
-            throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
-        }
+        super(address, isPrivate, MESSAGE_ADDRESS_CONSTRAINTS, ADDRESS_VALIDATION_REGEX);
     }
 
     /**

@@ -21,7 +21,7 @@ public class Email extends Contact {
      * @throws IllegalValueException if given email address string is invalid.
      */
     public Email(String email, boolean isPrivate) throws IllegalValueException {
-        super(email);
+        super(email, isPrivate, MESSAGE_EMAIL_CONSTRAINTS, EMAIL_VALIDATION_REGEX);
         this.isPrivate = isPrivate;
         if (!isValidEmail(this.value)) {
             throw new IllegalValueException(MESSAGE_EMAIL_CONSTRAINTS);

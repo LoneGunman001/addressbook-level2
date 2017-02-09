@@ -8,20 +8,33 @@ import seedu.addressbook.data.exception.IllegalValueException;
  */
 public class Contact {
     public final String value;
+    
+    private boolean isPrivate;
 
     /**
      * Validates given contact.
      *
      * @throws IllegalValueException if given contact string is invalid.
      */
-    public Contact(String contact) throws IllegalValueException {
+    public Contact(String contact, boolean isPrivate, String messageContactConstraints, String contactValidationRegex) throws IllegalValueException {
         String trimmedContact = contact.trim();
+        this.isPrivate = isPrivate;
+        if (!isValidContact(trimmedContact, contactValidationRegex)) {
+            throw new IllegalValueException(messageContactConstraints);
+        }
         this.value = trimmedContact;
     }
 
     @Override
     public String toString() {
         return value;
+    }
+    
+    /**
+     * Returns true if a given string is a valid person email.
+     */
+    public static boolean isValidContact(String test, String regex) {
+        return test.matches(regex);
     }
 
     @Override
