@@ -89,7 +89,7 @@ public class Person implements ReadOnlyPerson {
     public String getPrintableString(Printable... printables) {
         String printableString = "";
         for (Printable printable : printables) {
-            if (printableString.equals("")) {
+            if ("".equals(printableString)) {
                 printableString = printable.getPrintableString();
             } else {
                 printableString += PRINTABLE_SEPERATOR;
